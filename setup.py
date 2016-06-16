@@ -222,7 +222,7 @@ class PythonNET_BuildExt(build_ext):
         nuget = os.path.join("tools", "nuget", "nuget.exe")
         use_shell = False
         if DEVTOOLS == "Mono":
-            nuget = "mono %s" % nuget
+            nuget = "mono %s -ConfigFile /home/ubuntu/.config/NuGet/NuGet.config" % nuget
             use_shell = True
 
         cmd = "%s restore pythonnet.sln -o packages" % nuget
