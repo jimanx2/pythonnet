@@ -225,7 +225,10 @@ class PythonNET_BuildExt(build_ext):
             nuget = "mono %s" % nuget
             use_shell = True
 
-        cmd = "%s -ConfigFile /home/ubuntu/.config/NuGet/NuGet.config restore pythonnet.sln -o packages" % nuget
+        cmd_config = "%s config -ConfigFile /home/ubuntu/.config/NuGet/NuGet.Config"
+        cmd = "%s pythonnet.sln -o packages" % nuget
+        self.announce("Configuring NuGet")
+        check_call(cmd, shell=use_shell)
         self.announce("Installing packages: %s" % cmd)
         check_call(cmd, shell=use_shell)
 
