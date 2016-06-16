@@ -226,7 +226,7 @@ class PythonNET_BuildExt(build_ext):
             use_shell = True
 
         cmd_config = "%s config -ConfigFile /home/ubuntu/.config/NuGet/NuGet.Config"
-        cmd = "%s pythonnet.sln -o packages" % nuget
+        cmd = "%s restore pythonnet.sln -o packages" % nuget
         self.announce("Configuring NuGet")
         check_call(cmd, shell=use_shell)
         self.announce("Installing packages: %s" % cmd)
